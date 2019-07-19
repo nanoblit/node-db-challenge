@@ -13,6 +13,9 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
+    'linebreak-style': 0,
     'func-names': 0,
+    'arrow-parens': 0,
+    camelcase: 0,
   },
 };

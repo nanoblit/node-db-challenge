@@ -34,14 +34,14 @@ exports.seed = function (knex) {
         id: 5, project_id: 2, description: 'Bake it', notes: "I'm so hungry", complete: false,
       },
       {
-        id: 6, project_id: 3, description: 'Boil water', notes: "It's hot!", complete: false,
+        id: 6, project_id: 3, description: 'Boil water', notes: "It's hot!", complete: true,
       },
       {
         id: 7,
         project_id: 3,
         description: 'Put a teabag in it',
         notes: 'Not as hard as it seems',
-        complete: false,
+        complete: true,
       },
     ]));
 };
