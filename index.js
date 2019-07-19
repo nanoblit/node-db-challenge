@@ -68,8 +68,7 @@ app.post('/actions', async (req, res, next) => {
     const project = await getProject(body.project_id);
     if (!project) {
       res.status(400).json({ error: 'Project has to exist' });
-    }
-    else if ((!body.description, !body.project_id, !body.notes, body.complete === undefined)) {
+    } else if ((!body.description, !body.project_id, !body.notes, body.complete === undefined)) {
       res.status(400).json({ error: 'Name, notes, project_id and complete are required' });
     } else {
       const actionId = (await postAction(body))[0];
@@ -81,7 +80,7 @@ app.post('/actions', async (req, res, next) => {
   }
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error('ERROR:', err);
   res.status(500).json({
     message: err.message,
@@ -92,10 +91,3 @@ app.use((err, req, res, next) => {
 app.listen(4000, () => {
   console.log('listening on 4000');
 });
-
-// transaction
-function addUserWithEmail({ fname, lname, email }) {
-  return db.transaction(trx => trx('users')
-    .insert({ fname, lname })
-    .then(([id]) => trx('emails').insert({ email, user_id: id })));
-}
